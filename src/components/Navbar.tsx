@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { Search, Bell, Menu, MessageSquare } from "lucide-react";
+import { Search, Bell, MessageSquare } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "./ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
