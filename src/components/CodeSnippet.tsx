@@ -52,3 +52,5 @@ const CodeSnippet = ({code, language}: CodeSnippetProps) => {
         </div>
     )
 }
+
+export default CodeSnippet;

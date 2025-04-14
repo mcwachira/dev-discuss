@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { AppSidebar } from "@/components/App-SideBar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { CustomTrigger } from "@/components/Custom-Trigger";
+import {Toaster} from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,6 +61,7 @@ export default function RootLayout({
                   </div>
                   {children}
                 </main>
+                <Toaster />
               </SidebarProvider>
             </div>
           </div>
