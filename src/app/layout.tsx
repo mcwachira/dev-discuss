@@ -7,6 +7,7 @@ import { AppSidebar } from "@/components/App-SideBar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { CustomTrigger } from "@/components/Custom-Trigger";
 import {Toaster} from "@/components/ui/sonner";
+import RightSideBar from "@/components/RightSideBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +52,7 @@ export default function RootLayout({
                   <AppSidebar />
                 </div>
 
-                <main className="flex-1 overflow-y-auto p-4">
+                <main className="overflow-y-auto p-4">
                   {/* Responsive Top Row: Trigger + Title */}
                   <div className="flex items-center justify-between mb-4">
                     {/* Show trigger only on small screens */}
@@ -60,10 +61,20 @@ export default function RootLayout({
                     </div>
                   </div>
                   {children}
+
                 </main>
+
+<div className="flex-1">
+  <RightSideBar/>
+</div>
+
+
+
                 <Toaster />
               </SidebarProvider>
+
             </div>
+
           </div>
         </ThemeProvider>
       </body>
