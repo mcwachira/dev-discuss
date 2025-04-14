@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {Post} from "@/types";
+import {Post, User} from "@/types";
 import {mockUsers} from "@/data/mockData";
 import {Card, CardContent, CardFooter, CardHeader} from './ui/card';
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
@@ -44,6 +44,8 @@ function PostCard({post}:PostCardProps) {
     const mainContent= hasCodeSnippets? contentParts[0] :post.content;
     const codeSnippet= hasCodeSnippets && contentParts.length > 1 ?contentParts[1] :"";
 
+    console.log(post.id)
+
     return (
       <Card className="mb-4 border animate-fade-in glass-card">
 
@@ -72,7 +74,7 @@ function PostCard({post}:PostCardProps) {
           </CardHeader>
 
           <CardContent className="pb-3">
-            <Link href={`/post/${post.id}`}>
+            <Link href={`/posts/${post.id}`}>
              <h2 className="text-xl font-semibold mb-2 hover:text-discuss-primary cursor-pointer">
                  {post.title}
              </h2>
@@ -111,7 +113,7 @@ function PostCard({post}:PostCardProps) {
                           <span>{upVotedCount}</span>
 
                       </Button>
-                      <Link href={`/post/${post.id}`}>
+                      <Link href={`/posts/${post.id}`}>
                           <Button variant="ghost" size="sm" className="flex items-center gap-1">
                               <MessageSquare className="h-4 w-4" />
                               <span>{post.commentCount}</span>

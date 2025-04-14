@@ -12,7 +12,7 @@ import { toast } from 'sonner';
 import { Tag, X, Code, Image as ImageIcon, FileText, PenLine } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import CodeEditor from "@/components/CodeEditor";
-import {redirect} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 
 
 
@@ -32,6 +32,7 @@ export default  function CreatePostPage(){
     const [codeSnippet, setCodeSnippet] = useState<string>('');
     const [language, setLanguage] = useState<string>('javascript');
 
+    const router = useRouter()
 
     const form = useForm<PostFormValues>({
 resolver:zodResolver(postSchema),
@@ -231,7 +232,7 @@ resolver:zodResolver(postSchema),
                                 </div>
 
                                 <div className="flex justify-end gap-3">
-                                    <Button type="button" variant="outline" onClick={() => navigate('/')}>
+                                    <Button type="button" variant="outline" onClick={() => redirect('/')}>
                                         Cancel
                                     </Button>
                                     <Button type="submit">Publish Post</Button>
