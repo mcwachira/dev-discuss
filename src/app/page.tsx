@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { mockPosts } from '@/data/mockData';
 import PostFilter from "@/components/PostFilter";
+import PostCard from "@/components/PostCard";
 
 export default function Home() {
   const [sortBy, setSortBy] = useState("newest");
@@ -55,6 +56,10 @@ return (
             activeTab={activeTab}
             setActiveTab={setActiveTab}
         />
+
+        <div className="space-y-4">
+            {sortedPosts.map((post) => (<PostCard key={post.id} post={post}/>))}
+        </div>
 
     </div>
 </main>
