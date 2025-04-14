@@ -136,9 +136,26 @@
 
 @layer base {
     * {
-        @apply border-border outline-ring/50;
+        @apply border-border;
     }
+
     body {
         @apply bg-background text-foreground;
     }
 }
+
+.glass-card {
+    @apply backdrop-blur-sm bg-white/90 dark:bg-gray-900/90 border border-white/20 dark:border-gray-800/50 shadow-md;
+}
+
+@layer utilities {
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+}
+

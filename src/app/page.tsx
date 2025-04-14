@@ -4,6 +4,10 @@ import { useState } from "react";
 import { mockPosts } from '@/data/mockData';
 import PostFilter from "@/components/PostFilter";
 import PostCard from "@/components/PostCard";
+import {PlusCircle} from "lucide-react";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
+
 
 export default function Home() {
   const [sortBy, setSortBy] = useState("newest");
@@ -45,6 +49,14 @@ return (
         <h1 className="text-3xl font-bold tracking-tight">
             Feed
         </h1>
+
+        <Link href="/create-post">
+            <Button className="hidden md:flex">
+                <PlusCircle className="mr-2 h-4 w-4"/>
+
+                Create Post
+            </Button>
+        </Link>
     </div>
 
     <div className="bg-background p-0.5 rounded-lg">
