@@ -62,8 +62,8 @@ const submenu_two = [
     icon: Bookmark,
   },
   {
-    title: "Contributors",
-    url: "/contributors",
+    title: "Following",
+    url: "/following",
     icon: Users,
   },
 ];

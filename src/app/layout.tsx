@@ -52,7 +52,7 @@ export default function RootLayout({
                   <AppSidebar />
                 </div>
 
-                <main className="overflow-y-auto p-4">
+                <main className="flex-1 overflow-y-auto p-4">
                   {/* Responsive Top Row: Trigger + Title */}
                   <div className="flex items-center justify-between mb-4">
                     {/* Show trigger only on small screens */}
@@ -64,7 +64,7 @@ export default function RootLayout({
 
                 </main>
 
-<div className="flex-1">
+<div className="mx-auto">
   <RightSideBar/>
 </div>
 
