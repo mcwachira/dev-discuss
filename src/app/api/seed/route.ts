@@ -55,7 +55,27 @@ export async  function POST() {
 
         //create comment
 
-        await Promise.all(mockComments.map((comment) => prisma.comment.create({
+        // First create all top-level comments (those with no parent)
+      await Promise.all(
+            mockComments
+                .filter(comment => !comment.parentId)
+                .map(comment => prisma.comment.create({
+                    data: {
+                        id: comment.id,
+                        content: comment.content,
+                        postId: comment.postId,
+                        userId: comment.userId,
+                        upvotes: comment.upvotes,
+                        createdAt: new Date(comment.createdAt),
+                        updatedAt: new Date(),
+                        // parentId is null for top-level comments
+                    }
+                }))
+        );
+
+        // Then create all child comments (those with a parent)
+        await Promise.all(mockComments .filter(comment => comment.parentId)
+            .map((comment) => prisma.comment.create({
             data:{
                 id:comment.id,
                 content:comment.content,

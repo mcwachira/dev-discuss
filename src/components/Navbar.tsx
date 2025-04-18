@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Search, Bell, MessageSquare } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "./ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
+import HeaderAuth from "@/components/HeaderAuth";
 
 export default function Navbar() {
   return (
@@ -35,10 +35,7 @@ export default function Navbar() {
               <MessageSquare className="h-5 w-5" />
               <span className="sr-only">Messages</span>
             </Button>
-            <Avatar className="h-8 w-8">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>SC</AvatarFallback>
-            </Avatar>
+       <HeaderAuth/>
           </div>
         </div>
       </div>
