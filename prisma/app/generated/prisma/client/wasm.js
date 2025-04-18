@@ -142,9 +142,11 @@ exports.Prisma.SessionScalarFieldEnum = {
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  username: 'username',
   email: 'email',
   emailVerified: 'emailVerified',
-  image: 'image'
+  avatar: 'avatar',
+  bio: 'bio'
 };
 
 exports.Prisma.VerificationTokenScalarFieldEnum = {
@@ -153,12 +155,10 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
-exports.Prisma.TopicScalarFieldEnum = {
+exports.Prisma.TagScalarFieldEnum = {
   id: 'id',
-  slug: 'slug',
-  description: 'description',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  name: 'name',
+  color: 'color'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -166,9 +166,16 @@ exports.Prisma.PostScalarFieldEnum = {
   title: 'title',
   content: 'content',
   userId: 'userId',
-  topicId: 'topicId',
+  commentCount: 'commentCount',
+  upvotes: 'upvotes',
+  views: 'views',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TagsOnPostsScalarFieldEnum = {
+  postId: 'postId',
+  tagId: 'tagId'
 };
 
 exports.Prisma.CommentScalarFieldEnum = {
@@ -177,6 +184,7 @@ exports.Prisma.CommentScalarFieldEnum = {
   postId: 'postId',
   userId: 'userId',
   parentId: 'parentId',
+  upvotes: 'upvotes',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -202,8 +210,9 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   User: 'User',
   VerificationToken: 'VerificationToken',
-  Topic: 'Topic',
+  Tag: 'Tag',
   Post: 'Post',
+  TagsOnPosts: 'TagsOnPosts',
   Comment: 'Comment'
 };
 
