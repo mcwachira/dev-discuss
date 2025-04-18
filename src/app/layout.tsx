@@ -8,6 +8,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { CustomTrigger } from "@/components/Custom-Trigger";
 import {Toaster} from "@/components/ui/sonner";
 import RightSideBar from "@/components/RightSideBar";
+import {Providers} from "@/app/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+            <Providers>
           {/* Page layout */}
           <div className="flex flex-col min-h-screen">
             {/* Navbar at top */}
@@ -76,6 +78,7 @@ export default function RootLayout({
             </div>
 
           </div>
+            </Providers>
         </ThemeProvider>
       </body>
     </html>
