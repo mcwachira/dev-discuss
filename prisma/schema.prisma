@@ -68,11 +68,13 @@ model Post {
   id           String   @id @default(cuid())
   title        String
   content      String
-  slug         String   @unique
+  slug         String?  @unique
+  codeSnippet  String?
+  language     String?
   userId       String
-  commentCount Int
-  upvotes      Int
-  views        Int
+  commentCount Int      @default(0)
+  upvotes      Int      @default(0)
+  views        Int      @default(0)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 

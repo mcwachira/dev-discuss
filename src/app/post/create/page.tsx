@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import {useActionState, useState} from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -13,6 +13,7 @@ import { Tag, X, Code, Image as ImageIcon, FileText, PenLine } from 'lucide-reac
 import { Badge } from '@/components/ui/badge';
 import CodeEditor from "@/components/CodeEditor";
 import {redirect, useRouter} from "next/navigation";
+import * as actions from "@/actions"
 
 
 
@@ -22,8 +23,14 @@ const postSchema = z.object({
     content:z.string().min(20,{message:"Content must be at least 20 characters long" }),
 })
 
+interface PostCreateFormProps {
+    params: { slug: string };
+}
 type PostFormValues = z.infer<typeof postSchema>;
-export default  function CreatePostPage(){
+export default  function CreatePostPage({params}:PostCreateFormProps){
+    const slug = params.slug;
+
+    console.log(params)
 
     const [tags, setTags] = useState<string[]>([]);
     const [tagInput, setTagInput] = useState<string>('');
@@ -71,6 +78,13 @@ resolver:zodResolver(postSchema),
         toast.success('Post created successfully');
         redirect('/');
     };
+
+    const [formState, action] = useActionState(
+        actions.createPost.bind(null),
+        {
+            errors:{},
+        }
+    )
     return (
         <>
 
@@ -88,7 +102,7 @@ resolver:zodResolver(postSchema),
                     <div className="bg-card border rounded-lg p-6">
                         <Form {...form}>
                             {/*use action*/}
-                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <form  action={action}  className="space-y-6">
                                 <FormField
                                     control={form.control}
                                     name="title"
@@ -129,6 +143,7 @@ resolver:zodResolver(postSchema),
                                             onKeyDown={handleAddTag}
                                             className="flex-1"
                                         />
+                                        <input type="hidden" name="tags" value={JSON.stringify(tags)} />
                                     </div>
                                     <p className="text-xs text-muted-foreground mt-1">
                                         Tags help others discover your post

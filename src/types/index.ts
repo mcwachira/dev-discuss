@@ -17,6 +17,8 @@ export interface Post {
   title: string;
   content: string;
   slug:string;
+  codeSnippet: string;
+  language: string;
   createdAt: string;
   userId: string;
   tags: string[];

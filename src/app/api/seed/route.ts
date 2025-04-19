@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server"
 import {mockComments, mockPosts, mockTags, mockUsers} from "@/data/mockData";
 import prisma from "@/lib/prisma";
+import SlugifyFunction from "@/lib/slugify";
 export async  function POST() {
     if(process.env.NODE_ENV !== "development") {
         return NextResponse.json({error : "Not allowed"} , {status:403})
@@ -25,15 +26,18 @@ export async  function POST() {
         for(const post  of mockPosts){
             const createdPost = await prisma.post.create({
                 data:{
-                    id:post.id,
-                    title:post.title,
-                    content:post.content,
+                    id: post.id,
+                    title: post.title,
+                    slug: SlugifyFunction(post.title), // ✅ Required at creation
+                    content: post.content,
+                    codeSnippet: "",
+                    language: "",
                     createdAt: new Date(post.createdAt),
-                    updatedAt:new Date(),
-                    userId:post.userId,
-                    commentCount:post.commentCount,
-                    upvotes:post.upvotes,
-                    views:post.views,
+                    updatedAt: new Date(),
+                    userId: post.userId,
+                    commentCount: post.commentCount,
+                    upvotes: post.upvotes,
+                    views: post.views,
 
                 },
             })
@@ -91,6 +95,9 @@ export async  function POST() {
         })
         )
         )
+
+      
+
 
         return   NextResponse.json({message:"sending complete"})
     }catch(err){

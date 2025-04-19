@@ -50,7 +50,7 @@ return (
             Feed
         </h1>
 
-        <Link href="/create-post">
+        <Link href="/post/create">
             <Button className="hidden md:flex">
                 <PlusCircle className="mr-2 h-4 w-4"/>
 

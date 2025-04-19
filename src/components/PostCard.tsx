@@ -74,7 +74,7 @@ function PostCard({post}:PostCardProps) {
           </CardHeader>
 
           <CardContent className="pb-3">
-            <Link href={`/posts/${post.slug}`}>
+            <Link href={`/post/${post.slug}`}>
              <h2 className="text-xl font-semibold mb-2 hover:text-discuss-primary cursor-pointer">
                  {post.title}
              </h2>
@@ -113,7 +113,7 @@ function PostCard({post}:PostCardProps) {
                           <span>{upVotedCount}</span>
 
                       </Button>
-                      <Link href={`/posts/${post.id}`}>
+                      <Link href={`/post/${post.id}`}>
                           <Button variant="ghost" size="sm" className="flex items-center gap-1">
                               <MessageSquare className="h-4 w-4" />
                               <span>{post.commentCount}</span>
