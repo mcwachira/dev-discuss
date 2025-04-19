@@ -68,6 +68,7 @@ model Post {
   id           String   @id @default(cuid())
   title        String
   content      String
+  slug         String   @unique
   userId       String
   commentCount Int
   upvotes      Int

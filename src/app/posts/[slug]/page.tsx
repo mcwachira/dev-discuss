@@ -18,9 +18,9 @@ import CommentSection from "@/components/CommentSection";
 export default  function PostDetailsPage(){
 
     const params = useParams();
-    const id = params.id;
+    const slug = params.slug;
 
-    console.log(id);
+    console.log(slug);
     const[upvoted, setUpvoted] = useState<boolean>(false)
     const [bookmarked, setBookmarked] = useState<boolean>(false)
     const [upvotedCount, setUpvotedCount] = useState<number>(0)
@@ -28,7 +28,7 @@ export default  function PostDetailsPage(){
 
     const router = useRouter()
 
-    const post = mockPosts.find((post) => post.id === id) as Post;
+    const post = mockPosts.find((post) => post.slug === slug) as Post;
 
     if(!post){
         redirect('/not-found');

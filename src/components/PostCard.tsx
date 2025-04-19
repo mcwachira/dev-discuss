@@ -74,7 +74,7 @@ function PostCard({post}:PostCardProps) {
           </CardHeader>
 
           <CardContent className="pb-3">
-            <Link href={`/posts/${post.id}`}>
+            <Link href={`/posts/${post.slug}`}>
              <h2 className="text-xl font-semibold mb-2 hover:text-discuss-primary cursor-pointer">
                  {post.title}
              </h2>

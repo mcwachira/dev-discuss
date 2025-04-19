@@ -196,6 +196,7 @@ export const mockPosts: Post[] = [
     title: "What do you think of Next.js?",
     content:
       "I've been using Next.js for a few months now and I'm really impressed with its features. What are your thoughts on it? Do you prefer it over other frameworks?",
+    slug:"what-do-you-think-of-nextjs",
     createdAt: "2023-04-10T10:00:00Z",
     userId: "1",
     tags: ["nextjs", "react", "javascript"],
@@ -209,6 +210,7 @@ export const mockPosts: Post[] = [
     title: "Async Await in JavaScript",
     content:
       "I'm having trouble understanding how to properly use async/await in JavaScript. Can someone explain the best practices for error handling and avoiding common pitfalls?",
+    slug:"async-await-in-javascript",
     createdAt: "2023-04-11T09:00:00Z",
     userId: "1",
     tags: ["javascript", "async"],
@@ -222,6 +224,7 @@ export const mockPosts: Post[] = [
     title: "CSS Grid vs Flexbox - When to use which?",
     content:
       "I'm confused about when to use CSS Grid and when to use Flexbox. They seem to overlap in functionality. Could someone clarify the use cases for each?",
+    slug:"css-grid-vs-flexbox-when-to-use-which",
     createdAt: "2023-04-12T14:20:00Z",
     userId: "3",
     tags: ["css", "webdev"],
@@ -235,6 +238,7 @@ export const mockPosts: Post[] = [
     title: "TypeScript best practices for React",
     content:
       "I'm starting a new React project and want to use TypeScript properly. What are some best practices and common patterns for typing components, props, and state?",
+    slug:"typescript-best-practices-for-react",
     createdAt: "2023-04-13T11:45:00Z",
     userId: "2",
     tags: ["typescript", "react"],
@@ -248,6 +252,7 @@ export const mockPosts: Post[] = [
     title: "Setting up a Node.js API with Express and MongoDB",
     content:
       "I'm trying to create a REST API using Node.js, Express, and MongoDB. What's the best way to structure the project and handle authentication?",
+    slug:"setting-up-a-nodejs-api-with-express-and-mongodb",
     createdAt: "2023-04-14T16:30:00Z",
     userId: "4",
     tags: ["nodejs", "express", "mongodb"],
