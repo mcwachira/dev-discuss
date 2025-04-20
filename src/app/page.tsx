@@ -2,15 +2,15 @@ import {PlusCircle} from "lucide-react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import PostList from "@/components/PostList";
-import prisma from "@/lib/prisma";
-import {fetchPosts} from "@/db/queries/post";
+import {getSortedPosts} from "@/actions";
+
 
 
 
 export default async function Home() {
 
     //update this to a better way of fetching the post and including users and coments
-    const posts = await fetchPosts();
+    const posts = await getSortedPosts("newest");
     console.log(posts);
 
 return (
@@ -31,7 +31,7 @@ return (
         </Link>
     </div>
 
-    <PostList posts ={posts}/>
+    <PostList initialPosts ={posts}/>
 
 </main>
 

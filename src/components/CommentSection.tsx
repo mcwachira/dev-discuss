@@ -16,6 +16,8 @@ interface CommentSectionProps {
 
 const CommentSection = ({post}: CommentSectionProps) => {
 
+    console.log("commentSection", post);
+
     const [commentText, setCommentText] = useState("");
     const [replyTo, setReplyTo] = useState<string | null>(null);
     const [isExpanded, setIsExpanded] = useState<boolean>(false);

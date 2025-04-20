@@ -19,7 +19,7 @@ interface PostCardProps {
 }
 function PostCard({post}:PostCardProps) {
 
-    console.log(post)
+    console.log("one post", post.TagsOnPosts.map((tag) => tag.name))
     const [upvoted, setUpVoted] = useState(false);
     const [bookmarked, setBookmarked] = useState(false);
     const [upVotedCount, setUpVotedCount] = useState(post.upvotes);
@@ -95,13 +95,13 @@ function PostCard({post}:PostCardProps) {
             </div>
               )}
 
-              {/*<div className="flex flex-wrap gap-2 mt-3">*/}
-              {/*    {post.tags.map((tag) => (*/}
-              {/*        <Badge key={tag} variant="secondary" className="cursor-pointer">*/}
-              {/*    #{tag}*/}
-              {/*</Badge>*/}
-              {/*        ))}*/}
-              {/*</div>*/}
+              <div className="flex flex-wrap gap-2 mt-3">
+                  {post.TagsOnPosts.map((tag) => (
+                      <Badge key={tag.tagId} variant="secondary" className="cursor-pointer">
+                  #{tag.tag.name}
+              </Badge>
+                      ))}
+              </div>
           </CardContent>
 
           <CardFooter className="pt-0 flex flex-col">
