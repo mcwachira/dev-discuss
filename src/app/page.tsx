@@ -1,45 +1,17 @@
-"use client"
-
-import { useState } from "react";
-import { mockPosts } from '@/data/mockData';
-import PostFilter from "@/components/PostFilter";
-import PostCard from "@/components/PostCard";
 import {PlusCircle} from "lucide-react";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
+import PostList from "@/components/PostList";
+import prisma from "@/lib/prisma";
+import {fetchPosts} from "@/db/queries/post";
 
 
-export default function Home() {
-  const [sortBy, setSortBy] = useState("newest");
-  const [timeFrame, setTimeFrame] = useState("all");
-  const [activeTab, setActiveTab] = useState("all");
 
+export default async function Home() {
 
-const getSortedPosts = () => {
-  let filteredPosts = [...mockPosts]
-
-
-//popular  posts have  upvotes of more than 25
-if (activeTab === 'popular') {
-  filteredPosts = filteredPosts.filter(post => post.upvotes > 25);
-}
-
-switch (sortBy) {
-     case 'popular':
-       return filteredPosts.sort((a, b) => b.upvotes - a.upvotes);
-     case 'comments':
-       return filteredPosts.sort((a, b) => b.commentCount - a.commentCount);
-     case 'views':
-       return filteredPosts.sort((a, b) => b.views - a.views);
-     case 'newest':
-     default:
-       return filteredPosts.sort((a, b) =>
-         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-       );
-   }
- };
-
-  const sortedPosts = getSortedPosts();
+    //update this to a better way of fetching the post and including users and coments
+    const posts = await fetchPosts();
+    console.log(posts);
 
 return (
 <>
@@ -59,21 +31,8 @@ return (
         </Link>
     </div>
 
-    <div className="bg-background p-0.5 rounded-lg">
-        <PostFilter
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            timeFrame={timeFrame}
-            setTimeFrame={setTimeFrame}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-        />
+    <PostList posts ={posts}/>
 
-        <div className="space-y-4">
-            {sortedPosts.map((post) => (<PostCard key={post.id} post={post}/>))}
-        </div>
-
-    </div>
 </main>
 
     </div>

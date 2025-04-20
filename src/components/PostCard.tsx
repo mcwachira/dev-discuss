@@ -1,7 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {Post, User} from "@/types";
-import {mockUsers} from "@/data/mockData";
+
 import {Card, CardContent, CardFooter, CardHeader} from './ui/card';
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {formatDistanceToNow} from "date-fns";
@@ -12,6 +11,7 @@ import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
 import {Bookmark, Eye, MessageSquare, Share2, ThumbsUp} from "lucide-react";
 import CommentSection from "@/components/CommentSection";
+import {Post} from "@prisma/client";
 
 
 interface PostCardProps {
@@ -19,11 +19,12 @@ interface PostCardProps {
 }
 function PostCard({post}:PostCardProps) {
 
+    console.log(post)
     const [upvoted, setUpVoted] = useState(false);
     const [bookmarked, setBookmarked] = useState(false);
     const [upVotedCount, setUpVotedCount] = useState(post.upvotes);
 
-    const author = mockUsers.find((user) => user.id ===post.userId) as User
+    // const author = post.find((user) => user.id ===post.userId) as User
 
     const toggleUpVote = () => {
         if(upvoted){
@@ -44,7 +45,7 @@ function PostCard({post}:PostCardProps) {
     const mainContent= hasCodeSnippets? contentParts[0] :post.content;
     const codeSnippet= hasCodeSnippets && contentParts.length > 1 ?contentParts[1] :"";
 
-    console.log(post.id)
+    console.log(post)
 
     return (
       <Card className="mb-4 border animate-fade-in glass-card">
@@ -52,21 +53,21 @@ function PostCard({post}:PostCardProps) {
           <CardHeader className='pb-2'>
           <div className="flex justify-between items-start">
               <div className="flex items-center space-x-3">
-
+          
                   <Avatar>
-                      <AvatarImage src={author.avatar} alt={author.name} />
+                      <AvatarImage src={post.user.image} alt={post.user.name} />
                       <AvatarFallback>
-                          {author.name[0]}
+                          {post.user.name}
                       </AvatarFallback>
                   </Avatar>
-
+          
                   <div>
                       <h3 className="font-medium">
-                          {author.name}
+                          {post.user.name}
                       </h3>
-
+          
                       <p className="text-sm text-muted-foreground">
-                          @{author.username} • {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
+                          @{post.user.name} • {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
                       </p>
                   </div>
               </div>
@@ -94,13 +95,13 @@ function PostCard({post}:PostCardProps) {
             </div>
               )}
 
-              <div className="flex flex-wrap gap-2 mt-3">
-                  {post.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="cursor-pointer">
-                  #{tag}
-              </Badge>
-                      ))}
-              </div>
+              {/*<div className="flex flex-wrap gap-2 mt-3">*/}
+              {/*    {post.tags.map((tag) => (*/}
+              {/*        <Badge key={tag} variant="secondary" className="cursor-pointer">*/}
+              {/*    #{tag}*/}
+              {/*</Badge>*/}
+              {/*        ))}*/}
+              {/*</div>*/}
           </CardContent>
 
           <CardFooter className="pt-0 flex flex-col">
